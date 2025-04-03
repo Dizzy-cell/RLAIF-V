@@ -396,6 +396,21 @@ def train(attn_implementation=None):
         (ModelArguments, DataArguments, TrainingArguments))
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
+    import json
+    training_args_dict = training_args.to_dict()
+    with open('./json/train_args.json', 'w') as f:
+        json.dump(train_args_dict, f, indent = 4)
+
+    data_args = vars(data_args)
+    with open('./json/data_args.json', 'w') as f:
+        json.dump(data_args, f, indent = 4)
+
+    model_args = vars(model_args)
+    with open('./json/data_args.json', 'w') as f:
+        json.dump(model_args, f, indent = 4)
+    
+    
+
     if training_args.report_to == 'wandb':
         os.environ['WANDB_CACHE_DIR'] = get_local_dir(['.cache', '_temp'])
 
