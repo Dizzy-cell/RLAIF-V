@@ -116,6 +116,10 @@ class TrainingArguments(transformers.TrainingArguments):
     lora_weight_path: Optional[str] = field(default=None, metadata={"help": "path to lora weight."})
     lora_bias: Optional[str] = field(default="none", metadata={"help": "lora bias."})
 
+    output_dir: str = './result'
+    run_name: str = 'dev'
+    per_device_train_batch_size: int = 2
+    fb16: bool = True
 
 # all linear layers in the model are set to trainable
 def find_all_linear_names(model):
