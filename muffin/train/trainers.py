@@ -210,7 +210,7 @@ def get_beta_and_logps(data_dict, model, args, is_minicpm=False, is_llava15=Fals
             _,
             concatenated_inputs_embeds,
             concatenated_labels
-        ) = model.prepare_inputs_labels_for_multimodal(
+        ) = model.module.prepare_inputs_labels_for_multimodal(
             input_ids=concatenated_input_ids,
             position_ids=None,
             attention_mask=None,
